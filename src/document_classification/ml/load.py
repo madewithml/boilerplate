@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-from document_classification.configs.config import ml_logger
+from document_classification.config import ml_logger
 
 def load_data(data_file):
     """Load data from CSV to Pandas DataFrame.

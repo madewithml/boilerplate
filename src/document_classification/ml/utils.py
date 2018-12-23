@@ -7,7 +7,7 @@ from threading import Thread
 import torch
 import uuid
 
-from document_classification.utils import BASE_DIR, create_dirs
+from document_classification.config import BASE_DIR
 from document_classification.ml.load import load_data
 from document_classification.ml.split import split_data
 from document_classification.ml.preprocess import preprocess_text, preprocess_data
@@ -56,7 +56,7 @@ def training_setup(config):
     # Expand file paths
     config["save_dir"] = os.path.join(
         BASE_DIR, config["save_dir"], config["experiment_id"])
-    create_dirs(config["save_dir"])
+    os.makedirs(config["save_dir"])
     config["vectorizer_file"] = os.path.join(
         config["save_dir"], config["vectorizer_file"])
     config["model_file"] = os.path.join(
@@ -122,11 +122,10 @@ def training_operations(config):
 def inference_operations():
     """Inference operations.
     """
-    # Experiment id
-    experiment_id = "1545431238_932ed400-056f-11e9-82ef-8e0065915101"
 
     # Load train config
-    config_filepath = os.path.join(BASE_DIR, "experiments", experiment_id, "config.json")
+    config_filepath = os.path.join(
+        BASE_DIR, "experiments", experiment_id, "config.json")
     with open(config_filepath, 'r') as fp:
         config = json.load(fp)
 

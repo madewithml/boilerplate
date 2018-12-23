@@ -8,7 +8,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
-from document_classification.configs.config import ml_logger
+from document_classification.config import ml_logger
 from document_classification.ml.vocabulary import Vocabulary, SequenceVocabulary
 from document_classification.ml.vectorizer import Vectorizer
 from document_classification.ml.dataset import Dataset

@@ -1,8 +1,9 @@
 import os
 from flask_caching import Cache
-import logging
+from document_classification.utils import setup_logger, create_dirs
 
-from document_classification.utils import BASE_DIR, setup_logger, create_dirs
+# Base directory
+BASE_DIR = os.path.dirname(__file__)
 
 # Loggers
 log_dir = os.path.join(BASE_DIR, 'logs'); create_dirs(log_dir)
@@ -21,7 +22,6 @@ class FlaskConfig(object):
     SECRET_KEY = 'change-this-not-so-secret-key'
     SEND_FILE_MAX_AGE_DEFAULT = 0 # cache busting
     #PERMANENT_SESSION_LIFETIME = timedelta(minutes=60)
-    EXPERIMENTS_DIR = os.path.join(BASE_DIR, "experiments")
 
 class DevelopmentConfig(FlaskConfig):
     """
