@@ -1,5 +1,6 @@
 import os
 import json
+import shutil
 from threading import Thread
 
 from document_classification.config import BASE_DIR
@@ -39,7 +40,7 @@ def get_experiment_ids():
     # Only show valid experiments
     valid_experiment_ids = []
     for experiment_id in experiment_ids:
-        experiment_details = get_experiment_details(experiment_id)
+        experiment_details = get_experiment_info(experiment_id)
         if experiment_details["done_training"]:
             valid_experiment_ids.append(experiment_id)
 
@@ -48,8 +49,8 @@ def get_experiment_ids():
 
     return valid_experiment_ids
 
-def get_experiment_details(experiment_id):
-    """ Get training details for the experiment.
+def get_experiment_info(experiment_id):
+    """ Get training info for the experiment.
     """
 
     # Get experiment details
@@ -64,7 +65,16 @@ def get_experiment_details(experiment_id):
         train_state = json.load(fp)
 
     # Join info
-    experiment_details = {**config, **train_state}
+    experiment_info = {**config, **train_state}
 
-    return experiment_details
+    return experiment_info
+
+def delete_experiment(experiment_id):
+    """Delete an experiment.
+    """
+    # Delete the experiment dir
+    experiment_dir = os.path.join(BASE_DIR, "experiments", experiment_id)
+    shutil.rmtree(experiment_dir)
+    response = "Successfully deleted experiment id: {0}".format(experiment_id)
+    return response
 
