@@ -1,0 +1,42 @@
+import os
+from flask import Blueprint, jsonify, make_response, request
+import json
+import torch
+from threading import Thread
+
+from document_classification.api.utils import train
+
+# Define blueprint
+_api = Blueprint("_api", __name__)
+
+# Health check
+@_api.route("/api", methods=["GET"])
+#@cache.cached(timeout=3600)
+def _health_check():
+    """Health check.
+    """
+    resp = {"response": "We are live!"}
+    status = 200
+    return make_response(jsonify(resp), status)
+
+# Training
+@_api.route("/train", methods=["POST"])
+def _train():
+    """Training a model.
+    """
+
+    if request.method == "POST":
+
+        # Get config filepath
+        config_filepath = request.json["config_filepath"]
+
+        # Training
+        config = train(config_filepath=config_filepath)
+
+        resp = {
+            "experiment_id": config["experiment_id"],
+            "save_dir": config["save_dir"],
+            }
+        status = 200
+
+        return make_response(jsonify(resp), status)

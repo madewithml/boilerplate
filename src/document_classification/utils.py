@@ -1,14 +1,14 @@
 import os
 import sys
-import csv
 import logging
 from logging.handlers import RotatingFileHandler
-import time
-import torch
-import uuid
 
-# Base directory
-BASE_DIR = os.path.dirname(__file__)
+def create_dirs(dirpath):
+    """Creating directories.
+    """
+    if not os.path.exists(dirpath):
+        os.makedirs(dirpath)
+
 
 def setup_logger(name, log_file, level=logging.DEBUG):
     """Function setup as many loggers as you want.
@@ -32,10 +32,3 @@ def setup_logger(name, log_file, level=logging.DEBUG):
     logger.addHandler(handler)
 
     return logger
-
-
-def create_dirs(dirpath):
-    """Creating directories.
-    """
-    if not os.path.exists(dirpath):
-        os.makedirs(dirpath)

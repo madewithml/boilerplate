@@ -1,7 +1,7 @@
 import os
 import re
 
-from document_classification.configs.config import ml_logger
+from document_classification.config import ml_logger
 
 def preprocess_text(text):
     """Basic text preprocessing.
