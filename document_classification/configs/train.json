@@ -1,7 +1,7 @@
 {
   "seed": 1234,
   "cuda": false,
-  "data_file": "/Users/goku/Documents/productionML/src/datasets/news.csv",
+  "data_file": "/Users/goku/Documents/productionML/datasets/news.csv",
   "shuffle": true,
   "train_size": 0.7,
   "val_size": 0.15,
