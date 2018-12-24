@@ -29,6 +29,14 @@ curl --header "Content-Type: application/json" \
      http://localhost:5000/train
 ```
 
+- Inference `POST /infer`
+```bash
+curl --header "Content-Type: application/json" \
+     --request POST \
+     --data '{"config_filepath": "/Users/goku/Documents/productionML/document_classification/configs/infer.json"}' \
+     http://localhost:5000/infer
+```
+
 - List of experiments `GET /experiments`
 ```bash
 curl --header "Content-Type: application/json" \
@@ -36,52 +44,59 @@ curl --header "Content-Type: application/json" \
      http://localhost:5000/experiments
 ```
 
-- Experiment info `GET /experiment_info/<experiment_id>`
+- Experiment info `GET /info/<experiment_id>`
 ```bash
 curl --header "Content-Type: application/json" \
      --request GET \
      http://localhost:5000/info/latest
 ```
 
-- Delete an experiment
+- Delete an experiment `GET /delete/<experiement_id>`
 ```bash
 curl --header "Content-Type: application/json" \
      --request GET \
      http://localhost:5000/delete/1545593561_8371ca74-06e9-11e9-b8ca-8e0065915101
 ```
 
+- Get classes for a model `GET /classes/<experiement_id>`
+```bash
+curl --header "Content-Type: application/json" \
+     --request GET \
+     http://localhost:5000/classes/latest
+```
+
 ### Content
-- **datasets**:
-- **document_classification**:
-    - **api**:
-        - *api.py*:
-        - *utils.py*:
-    - **config**:
-        - *train.json*:
-        - *infer.json*:
-    - **experiments**:
-    - **logs**:
-        - *flask.log*:
-        - *ml.log*:
-    - **ml**:
-        - *dataset.py*:
-        - *inference.py*:
-        - *load.py*:
-        - *model.py*:
-        - *preprocess.py*:
-        - *split.py*:
-        - *training.py*:
-        - *utils.py*:
-        - *vectorizer.py*:
-        - *vocabulary.py*:
-    - *application.py*:
-    - *config.py*:
-    - *utils.py*:
-- *.gitignore*:
-- *Dockerfile*:
-- *LICENSE*:
-- *requirements.txt*:
-- *setup.py*:
+- **📁 datasets**:
+- **📁 document_classification**:
+    - **📁 api**:
+        - *📄 api.py*:
+        - *📄 utils.py*:
+    - **📁 config**:
+        - *📄 train.json*:
+        - *📄 infer.json*:
+    - **📁 experiments**:
+    - **📁 logs**:
+        - *📄 flask.log*:
+        - *📄 ml.log*:
+    - **📁 ml**:
+        - *📄 dataset.py*:
+        - *📄 inference.py*:
+        - *📄 load.py*:
+        - *📄 model.py*:
+        - *📄 preprocess.py*:
+        - *📄 split.py*:
+        - *📄 training.py*:
+        - *📄 utils.py*:
+        - *📄 vectorizer.py*:
+        - *📄 vocabulary.py*:
+    - *📄 application.py*:
+    - *📄 config.py*:
+    - *📄 utils.py*:
+- *📄 .gitignore*:
+- *📄 Dockerfile*:
+- *📄 LICENSE*:
+- *📄 requirements.txt*:
+- *📄 setup.py*:
 
 
 

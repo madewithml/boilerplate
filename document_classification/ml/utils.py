@@ -119,7 +119,7 @@ def training_operations(config):
     trainer.save_train_state()
 
 
-def inference_operations():
+def inference_operations(experiment_id, X):
     """Inference operations.
     """
 
@@ -142,12 +142,15 @@ def inference_operations():
 
     # Inference
     inference = Inference(model=model, vectorizer=vectorizer)
-    X = "President Bush signed the peace treaty at the White House dinner."
     top_k = inference.predict_top_k(preprocess_text(X), k=len(vectorizer.y_vocab))
-    print ("{}".format(X))
+    results = []
     for result in top_k:
-        print ("{} (p={:0.2f})".format(result['y'],
-                                       result['probability']))
+        results.append({
+            "category": result['y'],
+            "probability": np.float64(result['probability']),
+            })
+
+    return results
 
 
 
