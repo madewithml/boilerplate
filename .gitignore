@@ -7,8 +7,12 @@ __pycache__/
 *$py.class
 
 # Data
-data/
+#datasets/
+
+# Models
 experiments/
+
+# Logs
 logs/
 
 # C extensions
