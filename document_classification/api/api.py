@@ -4,8 +4,8 @@ import json
 import torch
 from threading import Thread
 
-from document_classification.api.utils import train, get_experiment_ids, \
-    get_experiment_info, delete_experiment
+from document_classification.api.utils import train, infer, get_experiment_ids, \
+    get_experiment_info, delete_experiment, get_classes
 
 # Define blueprint
 _api = Blueprint("_api", __name__)
@@ -41,7 +41,24 @@ def _train():
             "save_dir": config["save_dir"],
             }
         status = 200
+        return make_response(jsonify(resp), status)
 
+
+# Inference
+@_api.route("/infer", methods=["POST"])
+def _infer():
+    """Inference with a model.
+    """
+
+    if request.method == "POST":
+
+        # Get config filepath
+        config_filepath = request.json["config_filepath"]
+
+        # Inference
+        results = infer(config_filepath=config_filepath)
+        resp = {"results": results}
+        status = 200
         return make_response(jsonify(resp), status)
 
 
@@ -83,6 +100,21 @@ def _delete(experiment_id):
     resp = {"response": response}
     status = 200
     return make_response(jsonify(resp), status)
+
+
+# Classes
+@_api.route("/classes/<experiment_id>/", methods=["GET"])
+def _classes(experiment_id):
+    """Get classes for a model.
+    """
+    # Latest experiment_id
+    if experiment_id == "latest":
+        experiment_id = get_experiment_ids()[-1]
+
+    # Get classes
+    classes = get_classes(experiment_id=experiment_id)
+    return jsonify({"classes": classes})
+
 
 if __name__ == '__main__':
     pass
