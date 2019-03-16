@@ -4,5 +4,5 @@
   "github_username": "GokuMohandas",
   "project_name": "PROJECT",
   "service_name": "{{ cookiecutter.project_name.lower().replace('_','-').replace(' ', '-') }}",
-  "package_name": "{{ cookiecutter.project_name.lower().replace('-','_').replace(' ', '_') }}",
+  "package_name": "{{ cookiecutter.project_name.lower().replace('-','_').replace(' ', '_') }}"
 }
