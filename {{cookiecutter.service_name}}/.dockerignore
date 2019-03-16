@@ -9,6 +9,7 @@ __pycache__/
 # Data
 **/experiments
 **/logs
+**/tensorboard
 *.log
 
 # C extensions

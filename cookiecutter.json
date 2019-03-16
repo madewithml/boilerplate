@@ -1,6 +1,7 @@
 {
   "author_name": "Goku Mohandas",
-  "author_email": "gokumd@gmail.com",
+  "author_email": "learnpracticalai@gmail.com",
   "github_username": "GokuMohandas",
-  "service_name": "SERVICE"
+  "service_name": "SERVICE",
+  "package_name": "{{ cookiecutter.package_name }}"
 }

@@ -1,11 +1,11 @@
 # Boilerplate
 
-A cookiecutter boilerplate to wrap your machine learning code with REST APIs. Check out the [document-classification](https://github.com/GokuMohandas/document-classification) repository to see an example of how this cookiecutter can be used.
+A cookiecutter boilerplate to wrap your PyTorch machine learning code as a Flask REST API, complete with Dockerfiles, Tensorboard, etc.
 
 ### Set Up
 ```bash
 pip install cookiecutter invoke requests
-cookiecutter gh:practicalAI/productionML
+cookiecutter gh:practicalAI/boilerplate
 ```
 
 ### Steps
