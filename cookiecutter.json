@@ -2,6 +2,7 @@
   "author_name": "Goku Mohandas",
   "author_email": "learnpracticalai@gmail.com",
   "github_username": "GokuMohandas",
-  "service_name": "SERVICE",
-  "package_name": "{{ cookiecutter.package_name }}"
+  "project_name": "PROJECT",
+  "service_name": "{{ cookiecutter.project_name }}.lower().replace('_','-').replace(' ', '-')",
+  "package_name": "{{ cookiecutter.project_name }}.lower().replace('-','_').replace(' ', '_')",
 }
